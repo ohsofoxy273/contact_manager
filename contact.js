@@ -227,12 +227,12 @@ $(function() {
         },
 
         displayAddContactForm: function() {
-          $(document.body).on('click', '.add', function() {
+          $('main').on('click', '.add', function() {
            view.viewHelpers.hideContactsShowForm();
           });
         },
         submitForm: function() {
-          $(document.body).on('click', '#submit', function(event) {
+          $('#create_edit_contact').on('click', '#submit', function(event) {
             event.preventDefault();
             var formInput = view.viewHelpers.getFormData();
 
@@ -242,7 +242,7 @@ $(function() {
           });
         },
         deleteContact: function() {
-          $(document.body).on('click', '.delete', function() {
+          $('#contacts').on('click', '.delete', function() {
             var listItems = $(this).closest('ul').find('li');
             var listItem  = $(this).closest('li');
             var index = listItems.index(listItem);
@@ -251,21 +251,20 @@ $(function() {
           });
         },
         showEditForm: function() {
-          $(document.body).on('click', '.edit', function() {
+          $('#contacts').on('click', '.edit', function() {
             var list  = this.closest('li');
             var listItems = $(this).closest('ul').find('li');
             var name  = list.querySelector('h3').textContent;
             var phone = list.querySelector('.num').textContent;
             var email = list.querySelector('.email').textContent;
             var tags  = list.querySelector('.tags').textContent.trim().replace(/[\r\n]/g, '').replace(/ \s+/g, ' ').split(/[ ]+/);
-            debugger;
             var index = listItems.index(list);
 
             view.viewHelpers.hideContactsShowForm({action: "Edit", name: name, telephone: phone, email: email, tags: tags, contactIndex: index, button: '<button id="edit">Edit</button>'});
           });
         },
         editContact: function() {
-          $(document.body).on('click', '#edit', function() {
+          $('#create_edit_contact').on('click', '#edit', function() {
             event.preventDefault();
 
             var formInput = view.viewHelpers.getFormData();
@@ -294,7 +293,7 @@ $(function() {
           });
         },
         tagClick: function() { 
-          $(document).on('click', '.tag', function() {
+          $('#contacts').on('click', '.tag', function() {
             $('#reset_tag_search').show();
             var regex = new RegExp('\^' + $(this).text().trim(), 'gi');
             var matchingObjects = model.tags.matchingSearch(regex);
@@ -302,7 +301,7 @@ $(function() {
           });
         },
         resetTagSearch: function() {
-          $(document).on('click', '#reset_tag_search', function() {
+          $('#reset_tag_search').on('click', function() {
             view.viewHelpers.templates.appendContactsTemplate();
             $(this).hide();
           }); 
