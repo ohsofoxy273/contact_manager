@@ -33,7 +33,7 @@ $(function() {
         if (criteria) {
           return true;
         } else {
-          view.viewHelpers.inputErrorHandler(input);
+          view.inputErrorHandler(input);
           return false;
         }
       }
@@ -148,12 +148,11 @@ $(function() {
 
   var view = {
     init: function() {
-      this.viewHelpers.templates.init();
-      this.viewHelpers.pageLoad.init();
-      this.viewHelpers.eventListeners.init();
+      this.templates.init();
+      this.pageLoad.init();
+      this.eventListeners.init();
     },
-
-    viewHelpers: {    
+   
       pageLoad: {
         init: function() {
           this.hideElements();
@@ -228,16 +227,16 @@ $(function() {
 
         displayAddContactForm: function() {
           $('main').on('click', '.add', function() {
-           view.viewHelpers.hideContactsShowForm();
+           view.hideContactsShowForm();
           });
         },
         submitForm: function() {
           $('#create_edit_contact').on('click', '#submit', function(event) {
             event.preventDefault();
-            var formInput = view.viewHelpers.getFormData();
+            var formInput = view.getFormData();
 
             if (controller.contact.createContact(formInput)) {
-              view.viewHelpers.hideFormShowContacts();
+              view.hideFormShowContacts();
             }
           });
         },
@@ -247,7 +246,7 @@ $(function() {
             var listItem  = $(this).closest('li');
             var index = listItems.index(listItem);
             model.contacts.delete(index);
-            view.viewHelpers.templates.appendContactsTemplate();
+            view.templates.appendContactsTemplate();
           });
         },
         showEditForm: function() {
@@ -260,18 +259,18 @@ $(function() {
             var tags  = list.querySelector('.tags').textContent.trim().replace(/[\r\n]/g, '').replace(/ \s+/g, ' ').split(/[ ]+/);
             var index = listItems.index(list);
 
-            view.viewHelpers.hideContactsShowForm({action: "Edit", name: name, telephone: phone, email: email, tags: tags, contactIndex: index, button: '<button id="edit">Edit</button>'});
+            view.hideContactsShowForm({action: "Edit", name: name, telephone: phone, email: email, tags: tags, contactIndex: index, button: '<button id="edit">Edit</button>'});
           });
         },
         editContact: function() {
           $('#create_edit_contact').on('click', '#edit', function() {
             event.preventDefault();
 
-            var formInput = view.viewHelpers.getFormData();
+            var formInput = view.getFormData();
             var contactIndex = $('#contactIndex').val();
 
             if (controller.contact.updateContact(contactIndex, formInput)) {
-              view.viewHelpers.hideFormShowContacts();
+              view.hideFormShowContacts();
             }
           });
         },
@@ -279,7 +278,7 @@ $(function() {
           $('#search').on('keyup', function() {
             var regex = new RegExp('\^' + this.value, 'gi');
             var matchingObjects = model.contacts.matchingSearch(regex);
-            view.viewHelpers.templates.appendContactsTemplate(matchingObjects || []);
+            view.templates.appendContactsTemplate(matchingObjects || []);
           });
         },
         noSearchResults: function() {
@@ -297,12 +296,12 @@ $(function() {
             $('#reset_tag_search').show();
             var regex = new RegExp('\^' + $(this).text().trim(), 'gi');
             var matchingObjects = model.tags.matchingSearch(regex);
-            view.viewHelpers.templates.appendContactsTemplate(matchingObjects || []);
+            view.templates.appendContactsTemplate(matchingObjects || []);
           });
         },
         resetTagSearch: function() {
           $('#reset_tag_search').on('click', function() {
-            view.viewHelpers.templates.appendContactsTemplate();
+            view.templates.appendContactsTemplate();
             $(this).hide();
           }); 
         },
@@ -327,15 +326,15 @@ $(function() {
         $('#add_and_search').slideDown(600);
         $('form')[0].reset();
         $('#contacts').slideDown(600);
-        view.viewHelpers.templates.appendContactsTemplate();
+        view.templates.appendContactsTemplate();
       },
       hideContactsShowForm: function(options) {
-        view.viewHelpers.templates.appendFormTemplate(options);
+        view.templates.appendFormTemplate(options);
         $('#contacts').slideUp(600);
         $('#add_and_search').slideUp(600);
         $('#create_edit_contact').slideDown(600);
       },
-    },
+    
   };
 
   var contactsStorage = Object.create(model.contacts).init(JSON.parse(storage));
