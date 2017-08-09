@@ -1,0 +1,204 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* END CSS RESET */
+
+body {
+  font: 16px sans-serif;
+}
+
+header {
+  background-color: #563d7c;
+  text-align: center;
+}
+
+h1, header p {
+  color: #fff;
+}
+
+h1 {
+  font-size: 3rem;
+  padding-top: 2rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+header p {
+  font-size: 1.2rem;
+  padding-bottom: 1.5rem;
+}
+
+#add_and_search {
+  background-color: #eee;
+  margin: 0 1rem 0 1rem;
+  padding: 2rem 20rem 2rem 20rem;
+  border-radius: 0.4rem;
+}
+
+button {
+  background-color: transparent;
+  color: #563d7c;
+  border: 1px solid;
+  padding: 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 1.3rem;
+}
+
+input {
+  width: 15rem;
+  height: 2rem;
+  font-size: 1rem;
+  padding-left: 1rem;
+  border-radius: 0.2rem;
+}
+
+#search {
+  float: right;
+}
+
+footer {
+  border-top: #eee solid;
+  text-align: center;
+  margin: 0 1rem 0 1rem;
+  padding-top: 1rem;
+}
+
+form {
+  padding: 3rem 0 3rem 0;
+}
+
+form div {
+  width: 50%;
+  margin: 0 auto;
+}
+
+form p {
+  padding-bottom: 0.5rem;
+  border-bottom: #eee solid;
+  margin: 0 1rem 0 1rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+form label {
+  display: block;
+  margin: 1rem 7rem 0 0;
+  text-align: right;
+}
+
+form button {
+  margin: 1rem 1rem;
+}
+
+form input {
+  width: 20rem;
+}
+
+li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1rem;
+}
+
+#no_contacts, #no_search_results {
+  width: 90%;
+  height: 10rem;
+  background-color: #eee;
+  margin: 2rem auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.active {
+  background-color: #563d7c;
+  color: #fff;
+}
+
+.alert {
+  display: none;
+  font-size: 1rem;
+  color: #b00b00;
+  border-bottom: none;
+}
+
+.active_alert {
+  display: block;
+}
+
+.delete, .edit {
+  background-color: transparent;
+  color: #563d7c;
+  border: 1px solid;
+  padding: 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.7rem;
+
+}
+
+.tag {
+  display: block;
+  background-color: #563d7c;
+  color: #fff;
+  text-align: center;
+  margin: 5px 0 5px 0;
+  border-radius: 70px;
+  padding: 1px 0 1px 0;
+}
+
+.activeTag {
+  background-color: #785e9e;
+}
+
+#reset_tag_search {
+  display: block;
+  margin: 0 auto;
+}

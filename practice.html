@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Contact Manager</title>
+  <link rel="stylesheet" href="contact.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="handlebars-v4.0.10.js"></script>
+  <script src="contact.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Contact Manager</h1>
+    <p>Practice of Launch School Lessons</p>
+  </header>
+  <main>
+    <fieldset id="add_and_search">
+      <button class="add">Add Contact</button>
+      <input id="search" type="text" placeholder="Search">
+    </fieldset>
+    <section id="contacts">
+    </section>
+    <fieldset id="create_edit_contact">
+    </fieldset>
+    <button id="reset_tag_search">Reset Tag Search</button>
+  </main>
+  <footer>
+    Developed by Me
+  </footer>
+  <script id='contactsTemplate' type='text/x-handlebars'>
+    {{#if (contacts?)}}
+      {{> contactList}}
+    {{else}}
+    <div id="no_contacts">
+      <p>There are no contacts</p>
+      <button class="add">Add Contact</button>
+    </div> 
+    {{/if}}
+  </script>
+  <script id="contactList" type='text/x-handlebars'>
+    <ul>
+      {{#each contacts}}
+        <li class="contact_list_item">
+          <h3>{{name}}</h3>
+          <dl>
+            <dt>Phone number:</dt>
+            <dd class="num">{{phone}}</dd>
+            <dt>Email:</dt>
+            <dd class="email">{{email}}</dd>
+            <dt>Tags:</dt>
+            <dd class="tags">
+            {{#each tags}}
+              <div class="tag">
+                {{.}}
+              </div>
+            {{/each}}
+            </dd>
+          </dl>
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </li>
+      {{/each}}
+    </ul>
+      <div id="no_search_results">
+        <h3>Sorry,</h3>
+        <p>no contacts were found for that search.</p>
+      </div>
+  </script>
+  <script id='formTemplate' type='text/x-handlebars'>
+    <form action="" method="">
+      <p>{{action}} Contact</p>
+      <input type="hidden" id="contactIndex" value="{{contactIndex}}">
+      <div>
+        <label>Full name: <input name="name" type="text" value="{{name}}"></label>
+        <p class="alert">Please enter a valid name.</p>
+        <label>Email address: <input name="email" type="email" value={{email}}></label>
+        <p class="alert">Please enter a valid email.</p>
+        <label>Telephone number: <input name="telephone" type="text" value={{telephone}}></label>
+        <p class="alert">Please enter a valid telephone number.</p>
+        <label>Optional Tags: <input name="tags" type="text" value={{tags}}></label>
+        {{{button}}}
+        <button id="cancel">Cancel</button>
+      </div>
+    </form>
+  </script>
+</body>
+</html>
